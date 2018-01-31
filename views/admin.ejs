@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel='stylesheet' href='./stylesheets/style.css'/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+        <script src="./javascripts/angularApp.js"></script>
+        <script src="./javascripts/services/adminServices.js"></script>
+        <script src="./javascripts/controllers/adminController.js"></script>
+        <style>
+            .glyphicon-thumbs-up {
+                cursor: pointer
+            }
+        </style>
+    </head>
+    <body ng-app="app">
+        <script type="text/ng-template" id="/admin.html">
+            <div class="container">
+                <h1>Add data to mongodb</h1>
+                <form ng-submit="addPriority()">
+                    <fieldset>
+                        <legend>Category</legend>
+                        <div class="form-group">
+                            <label for="category">Select your category</label>
+                            <input id="category" ng-model="category" type="text" placeholder="Select your category" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Name</legend>
+                        <div class="form-group">
+                            <label for="name">Select the name</label>
+                            <input id="name" ng-model="name" type="text" placeholder="Select the name" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Rank</legend>
+                        <div class="form-group">
+                            <label for="rank">Select the rank</label>
+                            <input id="rank" ng-model="rank" type="text" placeholder="Select the rank" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Short Description</legend>
+                        <div class="form-group">
+                            <label for="desc">Select the short description</label>
+                            <input id="desc" ng-model="desc" type="text" placeholder="Select the short description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Full Description</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">
+                        Add your prioritie
+                    </button>
+                </form>
+            </div>
+        </script>
+    </body>
+</html>

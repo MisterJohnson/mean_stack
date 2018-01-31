@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel='stylesheet' href='./stylesheets/style.css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="./javascripts/angularApp.js"></script>
+    <script src="./javascripts/services/charactersServices.js"></script>
+    <script src="./javascripts/controllers/priorityController.js"></script>
+    <script src="./javascripts/controllers/mainController.js"></script>
+    <style>
+        .glyphicon-thumbs-up {
+            cursor: pointer
+        }
+    </style>
+</head>
+<body ng-app="app">
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <ui-view></ui-view>
+    </div>
+</div>
+<script type="text/ng-template" id="/home.html">
+    <div class="page-header">
+        <h1>Flapper News</h1>
+    </div>
+    <div ng-repeat="character in characters | orderBy: '-runnerName'">
+        <div>
+            <span ng-click="addNuyen(character)" class="glyphicon glyphicon-thumbs-up">
+                <p>
+                    <strong>SIN name</strong> : {{character.sin_name}}
+                </p>
+
+                <p>
+                     <strong>Runner name</strong> : {{character.runner_name}}
+                </p>
+
+                <p>
+                    <strong>Nuyen</strong> : {{character.nuyen}}
+                </p>
+            </span>
+            <span>
+                <a href="#/character/{{character._id}}">See character</a>
+            </span>
+        </div>
+        <hr/>
+    </div>
+    <div>
+        <form ng-submit="addCharacters()" style="margin-top:30px;">
+            <h3>Add a new Character</h3>
+            <div class="form-group">
+                <input type="text" placeholder="Sin Name" ng-model="sin_name" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Runner name" ng-model="runner_name" class="form-control"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add a new character</button>
+        </form>
+    </div>
+</script>
+<script type="text/ng-template" id="/character.html">
+    <div class="page-header">
+        <h1>
+            {{character.sin_name}}
+        </h1>
+    </div>
+    <div ng-repeat="priority in character.priority_set">
+        <div class="glyphicon glyphicon-thumbs-up" ng-click="incrementNuyen(character)">
+            <div>
+                <h4>Magic or Resonance</h4> <br />
+                <p><strong>Magic type</strong> : {{priority.magic.magic_type}}</p>
+                <p><strong>Magic rating</strong> : {{priority.magic.magic_rating}}</p>
+
+                <p ng-repeat="bonus in priority.magic.magic_bonuses">
+                    <span>
+                        <strong>Skill name</strong> : {{bonus.skill_name}}, rating : {{bonus.skill_rating}}
+                    </span>
+                </p>
+            </div>
+            <br />
+            <div>
+                <h4>Skills</h4>
+                <p><span><strong>Skills points</strong> : {{priority.skills.skills_points}}</span></p>
+                <p><span><strong>Groups points</strong> : {{priority.skills.groups_points}}</span></p>
+            </div>
+            <br />
+            <div>
+                <p>
+                    <h4>Attributes points : {{priority.attributes.attibutes_points}} pts</h4>
+                </p>
+            </div>
+            <br />
+            <div>
+                <h4>Metatype :</h4>
+                <p><span><strong>Races</strong> : {{priority.metatype.race}}</span></p>
+                <p><span><strong>Metavariant</strong> : {{priority.metatype.sub_race}}</span></p>
+                <p><span><strong>Specials points</strong> : {{priority.metatype.specials_points}}</span></p>
+            </div>
+            <br />
+            <div>
+                <h4>Ressources : {{priority.ressources}}</h4>
+            </div>
+        </div>
+        <hr />
+        <!-- post template -->
+        <form ng-submit="addPriority()" style="margin-top:30px;">
+            <h3>Choose your priorities</h3>
+            <div class="">
+
+            </div>
+            <fieldset>
+                <legend>Magic Priority</legend>
+                <div class="form-group">
+                    <label for="magic_priority">
+                        Please select the magic priority you wish :
+                        <select ng-model="magic_type" id="magic_priority" ng-options="x for (x,y) in magic_type_array" class="form-control" ng-change="onMagicTypeChangeCheck(magic_type)" ng-class="hasError()"></select>
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Skills</legend>
+                <div class="form-group">
+                    <label for="skills_priority">
+                        Please select the skills priority you wish :
+                        <select ng-model="skills" id="magic_priority" ng-options="x for (x,y) in skills_type_array" class="form-control" ng-change="onSkillChangeCheck(skills)" ng-class="hasError()"></select>
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Attributes</legend>
+                <div class="form-group">
+                    <label for="attributes_priority">
+                        Please select the attributes priority you wish :
+                        <select ng-model="attributes" id="attributes_priority" class="form-control">
+                            <option value="A">24 points</option>
+                            <option value="B">20 points</option>
+                            <option value="C">16 points</option>
+                            <option value="D">14 points</option>
+                            <option value="E">12 points</option>
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Metatype</legend>
+                <div class="form-group">
+                    <label for="metatype_priority">
+                        Please select the metatype priority you wish :
+                        <select ng-model="metatype" id="metatype_priority" class="form-control">
+                            <option value="A">Human, Elf, Dwarf, Ork, Troll</option>
+                            <option value="B">Human, Elf, Dwarf, Ork, Troll</option>
+                            <option value="C">Human, Elf, Dwarf, Ork</option>
+                            <option value="D">Human, Elf</option>
+                            <option value="E">Human</option>
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Ressources</legend>
+                <div class="form-group">
+                    <label for="ressources_priority">
+                        Please select the ressources priority you wish :
+                        <select ng-model="ressources" id="ressources_priority" class="form-control">
+                            <option value="A">450000</option>
+                            <option value="B">275000</option>
+                            <option value="C">140000</option>
+                            <option value="D">50000</option>
+                            <option value="E">6000</option>
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">
+                Select your priorities
+            </button>
+        </form>
+    </div>
+</script>
+</body>
+</html>
+
