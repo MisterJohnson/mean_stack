@@ -1,9 +1,9 @@
 var app = angular.module("app");
 
 app.factory('priority', ['$http', function($http) {
-  var a = {
+    var a = {
       priority : []
-  };
+    };
 
     a.create = function(dataEntry) {
         return $http.post('/admin/data/priorities', dataEntry).success(function(data){
@@ -11,5 +11,5 @@ app.factory('priority', ['$http', function($http) {
         });
     };
 
-  return a;
+    return a;
 }]);
