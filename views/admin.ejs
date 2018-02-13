@@ -15,49 +15,166 @@
             }
         </style>
     </head>
-    <body ng-app="app" ng-controller="adminController">
-        <div class="container">
-            <h1>Add data to mongodb</h1>
-            <form ng-submit="addPriority()">
-                <fieldset>
-                    <legend>Category</legend>
-                    <div class="form-group">
-                        <label for="category">Select your category</label>
-                        <input id="category" ng-model="category" type="text" placeholder="Select your category" class="form-control" />
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Name</legend>
-                    <div class="form-group">
-                        <label for="name">Select the name</label>
-                        <input id="name" ng-model="name" type="text" placeholder="Select the name" class="form-control" />
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Rank</legend>
-                    <div class="form-group">
-                        <label for="rank">Select the rank</label>
-                        <input id="rank" ng-model="rank" type="text" placeholder="Select the rank" class="form-control" />
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Short Description</legend>
-                    <div class="form-group">
-                        <label for="desc">Select the short description</label>
-                        <input id="desc" ng-model="desc" type="text" placeholder="Select the short description" class="form-control" />
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Full Description</legend>
-                    <div class="form-group">
-                        <label for="description">Select the full description</label>
-                        <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
-                    </div>
-                </fieldset>
-                <button type="submit" class="btn btn-primary">
-                    Add your prioritie
-                </button>
-            </form>
+    <body ng-app="app">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <ui-view></ui-view>
+            </div>
+            <div class="adminPanel">
+                <ul>
+                    <li>
+                        <a href="#/admin">add Priority Data</a>
+                    </li>
+                    <li>
+                        <a href="#/addWeapon">add Weapon Data</a>
+                    </li>
+                    <li>
+                        <a href="#/addGear">add Gear Data</a>
+                    </li>
+                    <li>
+                        <a href="#/addVehicule">add Vehicule Data</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <script type="text/ng-template" id="/admin.html">
+            <div>
+                <h1>Add data to mongodb</h1>
+                <form ng-submit="addPriority()">
+                    <fieldset>
+                        <legend>Category</legend>
+                        <div class="form-group">
+                            <label for="category">Select your category</label>
+                            <input id="category" ng-model="category" type="text" placeholder="Select your category" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Name</legend>
+                        <div class="form-group">
+                            <label for="name">Select the name</label>
+                            <input id="name" ng-model="name" type="text" placeholder="Select the name" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Rank</legend>
+                        <div class="form-group">
+                            <label for="rank">Select the rank</label>
+                            <input id="rank" ng-model="rank" type="text" placeholder="Select the rank" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Short Description</legend>
+                        <div class="form-group">
+                            <label for="desc">Select the short description</label>
+                            <input id="desc" ng-model="desc" type="text" placeholder="Select the short description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Full Description</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">
+                        Add your prioritie
+                    </button>
+                </form>
+            </div>
+        </script>
+        <script type="text/ng-template" id="/addWeapon.html">
+            <div>
+                <h1>Add Weapons data to mongodb</h1>
+                <form ng-submit="addPriority()">
+                    <fieldset class="col-md-6">
+                        <legend>Weapons Name</legend>
+                        <div class="form-group">
+                            <label for="category">Enter the weapon name</label>
+                            <input id="category" ng-model="category" type="text" placeholder="Select your category" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Weapons category</legend>
+                        <div class="form-group">
+                            <label for="name">Select the weapon category</label>
+                            <input id="name" ng-model="name" type="text" placeholder="Select the name" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Accuracy</legend>
+                        <div class="form-group">
+                            <label for="rank">Select the rank</label>
+                            <input id="rank" ng-model="rank" type="text" placeholder="Select the rank" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Dammage Rating</legend>
+                        <div class="form-group">
+                            <label for="desc">Select the short description</label>
+                            <input id="desc" ng-model="desc" type="text" placeholder="Select the short description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Available Mode</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Ammo Capacity</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Recoil Compensation</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Range</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Cost</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Availability</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Manufacturer</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <legend>Description</legend>
+                        <div class="form-group">
+                            <label for="description">Select the full description</label>
+                            <input id="description" ng-model="description" type="text" placeholder="Select the full description" class="form-control" />
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">
+                        Add your prioritie
+                    </button>
+                </form>
+            </div>
+        </script>
     </body>
 </html>

@@ -35,5 +35,12 @@ angular.module('app', ['ui.router'])
                     controller: 'adminController'
                 });
 
+            $stateProvider
+                .state('addWeapon', {
+                    url: '/addWeapon',
+                    templateUrl: '/addWeapon.html',
+                    controller: 'adminController'
+                });
+
             $urlRouterProvider.otherwise('home');
         }]);
