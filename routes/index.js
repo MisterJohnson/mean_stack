@@ -7,7 +7,7 @@ var Priority = mongoose.model('Priority');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    res.render('index', { title: 'Express' });
+    res.render('pages/index', { title: 'Express' });
 });
 
 //Get a list of all the characters

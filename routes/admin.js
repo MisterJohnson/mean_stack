@@ -7,7 +7,7 @@ var DataEntry = mongoose.model('DataEntry');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    res.render('admin', { title: 'Administration panel' });
+    res.render('pages/admin', { title: 'Administration panel' });
 });
 
 router.post('/data/priorities', function(req, res, next) {
