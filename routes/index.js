@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var Character = mongoose.model('Character');
 var Priority = mongoose.model('Priority');
 
+var index = "index";
+
 /* GET home page. */
 router.get('/', function(req, res) {
     res.render('pages/index', { title: 'Express' });
